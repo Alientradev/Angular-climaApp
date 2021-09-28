@@ -1,0 +1,29 @@
+<div *ngIf="mostrarError" class="alert alert-dismissible alert-danger">
+    <div class="text-center">
+        <strong>Error!</strong>Ciudad No Encontrada
+    </div>
+</div>
+
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-4">
+            <img [src]="imagenClima" alt="Clima" class="imagenClima">
+        </div>
+        <div class="col-lg-6">
+            <input type="text" [(ngModel)]='ciudad' name="" id="" placeholder="Ingrese la ciudad" class="form-control form-control-lg size">
+            <button (click)="obtenerClima()" [disabled]="ciudad===''" class="btn btn-primary btn-lg btn-block mt-4 size">Obtener Clima</button>
+
+            <div *ngIf="loading" class="text-center mt-3">
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+
+            <div *ngIf="query" class="card mt-3">
+                <div class="card-body">
+                    <p><b>Temperatura: </b>{{tempetura | number: '1.2-2'}} °C</p>
+                    <p><b>Humedad: </b>{{humedad}}</p>
+                    <p><b>Clima: </b>{{clima}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
